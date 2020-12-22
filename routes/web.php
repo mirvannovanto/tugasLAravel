@@ -21,6 +21,3 @@ Route::get('/register', 'AuthController@register');
 
 Route::get('/welcome', 'AuthController@welcome');
 Route::post('/welcome', 'AuthController@welcomeReg');
-//Route::get('/welcome', function () {
-    return view('welcomeTugas');
-//});

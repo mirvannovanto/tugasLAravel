@@ -22,7 +22,8 @@ class AuthController extends Controller
         //deklarasi variabel
         $namaAwal = $request->namaAwal;
         $namaAkhir = $request->namaAkhir;
-
+        
+        //untuk cek input form registrasi
         //dd($request->all());
         
         return view ('welcomeTugas', compact('namaAwal','namaAkhir'));
