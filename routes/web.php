@@ -14,10 +14,20 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+//tugas pertama
+// Route::get('/', 'HomeController@home');
 
-Route::get('/', 'HomeController@home');
+// Route::get('/register', 'AuthController@register');
 
-Route::get('/register', 'AuthController@register');
+// Route::get('/welcome', 'AuthController@welcome');
+// Route::post('/welcome', 'AuthController@welcomeReg');
 
-Route::get('/welcome', 'AuthController@welcome');
-Route::post('/welcome', 'AuthController@welcomeReg');
+
+//tugas kedua
+
+Route::get('/',function(){
+    return view('index');
+});
+Route::get('/data-tables',function(){
+    return view('data-tables');
+});
