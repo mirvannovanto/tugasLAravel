@@ -1,8 +1,8 @@
 @extends('layout.master')
 
 @section('content')
-
-<div class="card-body">
+<div class="container-fluid">
+    <div class="card-body">
     @if (session('success'))
        <div class="alert alert-success" >
         {{session('success')}}
@@ -12,10 +12,10 @@
     <table class="table table-bordered ">
       <thead class="bg-success">                  
         <tr>
-          <th  style="width: 10px">No</th>
-          <th >Judul</th>
+          <th style="width:10px">No</th>
+          <th>Judul</th>
           <th >Pertanyaan</th>
-          <th > </th>
+          <th > Tindakan </th>
           
         </tr>
       </thead>
@@ -25,7 +25,8 @@
                 <td>{{$key + 1}}</td>
                 <td>{{$tanya->judul}}</td>
                 <td>{{$tanya->isi}}</td>
-                <td>
+                <td >
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <a class="btn btn-info btn-sm" href="/pertanyaan/{{$tanya->id}}" role="button">Tampilkan Detail</a>
                     <a class="btn btn-info btn-sm" href="/pertanyaan/{{$tanya->id}}/edit" role="button">Edit</a>
                     <form action="/pertanyaan/{{$tanya->id}}" method="POST">
@@ -33,6 +34,7 @@
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger btn-sm" value="!!HAPUS!!">
                     </form>
+                    </div>
                 </td>
             </tr>
         @empty
@@ -44,6 +46,6 @@
     </table>
   </div>
 
-
+</div>
 
 @endsection
