@@ -10,9 +10,7 @@
       <p class="card-text">{{$tanya->isi}}</p>
       <a href="/pertanyaan/index" class="btn btn-primary">Kembali Ke Halaman Utama</a>
     </div>
-    <div class="card-footer text-muted">
-      2 days ago
-    </div>
+    
   </div>
    
 @endsection

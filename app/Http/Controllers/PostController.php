@@ -41,5 +41,27 @@ class PostController extends Controller
     return view('pertanyaan.show', compact('tanya'));
 
     }
+
+    public function edit($tanyaID){
+        $tanya = DB::table('pertanyaan')->where('id', $tanyaID)->first();
+        return view('pertanyaan.edit', compact('tanya'));
+    }
     
+    public function update($tanyaID, Request $request){
+        $request->validate([
+            'judul' => 'required',
+            'pertanyaan' => 'required'
+        ]);
+        $query = DB::table('pertanyaan')->where('id',$tanyaID)
+        ->update([
+            'judul' => $request["judul"],
+            'isi' => $request["pertanyaan"]
+        ]);
+        return redirect('/pertanyaan/index')->with('success', 'Berhasil Menyunting Pertanyaan');
+    }
+
+    public function destroy($tanyaID){
+        $query = DB::table('pertanyaan')->where('id', $tanyaID)->delete();
+        return redirect('/pertanyaan/index')->with('success', 'Berhasil MEnghapus Pertanyaan');
+    }
 }

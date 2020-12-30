@@ -38,3 +38,6 @@ Route::get('/pertanyaan/create', 'PostController@create');
 Route::post('/pertanyaan','PostController@store');
 Route::get('/pertanyaan/index', 'PostController@index');
 Route::get('/pertanyaan/{tanyaID}', 'PostController@show');
+Route::get('/pertanyaan/{tanyaID}/edit', 'PostController@edit');
+Route::put('/pertanyaan/{tanyaID}', 'PostController@update');
+Route::delete('/pertanyaan/{tanyaID}', 'PostController@destroy');
