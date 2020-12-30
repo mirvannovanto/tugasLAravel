@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB;
+
+class PostController extends Controller
+{
+    //untuk ke halaman ngepost pertanyaan
+    public function create(){
+        return view('pertanyaan.create');
+    }
+
+    //untuk input data/store
+    public function store(Request $request){
+       // dd($request->all());
+        $request->validate([
+            'judul' => 'required',
+            'pertanyaan' => 'required'
+        ]);
+        $query = DB::table('pertanyaan')->insert([
+            "judul" => $request["judul"],
+            "isi" => $request["pertanyaan"]
+        ]);
+
+        return redirect('/pertanyaan/index')->with('success','pertanyaan berhasil dimasukkan');
+    }
+    //menampilkan index untuk list pertanyaan
+    public function index(){
+
+        $pertanyaan = DB::table('pertanyaan')->get();
+        //dd($pertanyaan);
+        return view('pertanyaan.index', compact('pertanyaan'));
+    }
+
+    public function show($tanyaID){
+
+        $tanya = DB::table('pertanyaan')->where('id', $tanyaID)->first();
+        //dd($tanya);
+    return view('pertanyaan.show', compact('tanya'));
+
+    }
+    
+}

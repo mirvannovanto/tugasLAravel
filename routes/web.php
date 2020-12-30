@@ -24,10 +24,17 @@
 
 
 //tugas kedua
-
+/*
 Route::get('/',function(){
     return view('index');
 });
 Route::get('/data-tables',function(){
     return view('data-tables');
 });
+*/
+
+//tugas CRUD
+Route::get('/pertanyaan/create', 'PostController@create');
+Route::post('/pertanyaan','PostController@store');
+Route::get('/pertanyaan/index', 'PostController@index');
+Route::get('/pertanyaan/{tanyaID}', 'PostController@show');
