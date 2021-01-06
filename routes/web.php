@@ -41,6 +41,8 @@ Route::get('/pertanyaan/{tanyaID}', 'PostController@show');
 Route::get('/pertanyaan/{tanyaID}/edit', 'PostController@edit');
 Route::put('/pertanyaan/{tanyaID}', 'PostController@update');
 Route::delete('/pertanyaan/{tanyaID}', 'PostController@destroy');
+
+Route::resource('pertanyaan', 'PostController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

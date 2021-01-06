@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class PostController extends Controller
 {
@@ -21,7 +22,8 @@ class PostController extends Controller
         ]);
         $query = DB::table('pertanyaan')->insert([
             "judul" => $request["judul"],
-            "isi" => $request["pertanyaan"]
+            "isi" => $request["pertanyaan"],
+            "user_id" => Auth::id()
         ]);
 
         return redirect('/pertanyaan/index')->with('success','pertanyaan berhasil dimasukkan');
@@ -63,5 +65,11 @@ class PostController extends Controller
     public function destroy($tanyaID){
         $query = DB::table('pertanyaan')->where('id', $tanyaID)->delete();
         return redirect('/pertanyaan/index')->with('success', 'Berhasil MEnghapus Pertanyaan');
+    }
+
+    //bagian autentifikasi user
+    public function __construct()
+    {
+    $this->middleware('auth')->except(['index']);
     }
 }
